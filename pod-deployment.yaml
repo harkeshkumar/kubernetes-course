@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubia
+  namespace: dev
+spec:
+  replicas: 2
+#  revisionHistoryLimit: 2
+#  strategy:
+#    rollingUpdate:
+#      maxSurge: 1
+#      maxUnavailable: 0
+#    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: kubia
+  template:
+    metadata:
+      labels:
+        app: kubia
+    spec:
+      containers:
+      - name: kubia
+        image: harkeshkumar/kubernetes-course:nginx-hostname-v3
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80

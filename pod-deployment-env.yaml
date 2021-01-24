@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubia-env
+  namespace: dev
+spec:
+  replicas: 2
+  revisionHistoryLimit: 2
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: kubia-env
+  template:
+    metadata:
+      labels:
+        app: kubia-env
+    spec:
+      containers:
+      - name: kubia-env
+        image: harkeshkumar/kubernetes-course:python-v3
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000
+        resources:
+          limits:
+            memory: 1000Mi
+            cpu: 1024m
+          requests:
+            memory: 500Mi
+            cpu: 512m     
+        env:
+        - name: USERNAME
+          value: "kubernetes-1"
+        - name: PASSWORD
+          value: "passwor-1"
+      nodeSelector:
+        cpuIntensive: "yes"
+#        env:
+#        - name: USERNAME
+#          valueFrom:
+#            configMapKeyRef:
+#              name: env-config
+#              key: USERNAME
+#        - name: PASSWORD
+#          valueFrom:
+#            configMapKeyRef:
+#              name: env-config
+#              key: PASSWORD
+
+#        env:
+#        - name: USERNAME
+#          valueFrom:
+#            secretKeyRef:
+#              name: kubia-secret
+#              key: USERNAME
+#        - name: PASSWORD
+#          valueFrom:
+#            secretKeyRef:
+#              name: kubia-secret
+#              key: PASSWORD

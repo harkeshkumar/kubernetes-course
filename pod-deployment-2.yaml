@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubia-2
+  namespace: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubia-2
+  template:
+    metadata:
+      labels:
+        app: kubia-2
+    spec:
+      containers:
+      - name: kubia
+        image: harkeshkumar/kubernetes-course:nginx-hostname-v3
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80

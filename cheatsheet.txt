@@ -1,0 +1,57 @@
+https://www.bogotobogo.com/DevOps/Docker/Docker-Kubernetes-Minikube-install-on-AWS-EC2.php
+sudo sysctl fs.prote=0
+
+kubectl explain pods
+kubectl explain pods.spec
+
+kubectl  get pods
+kubectl apply -f pod.yaml
+kubectl get pods -o wide
+kubectl describe pods kubia-manual
+kubectl delete pod kubia-manual
+
+kubectl logs -f kubia-manual
+
+kubectl exec -it kubia-manual bash
+
+kubectl create namespace <namepsacename>
+
+#To add extra addons in kubernetes
+minikube addons list
+
+#Deployment commands
+https://www.weave.works/blog/kubernetes-deployment-strategies
+https://istio.io/latest/docs/concepts/what-is-istio/
+
+kubectl rollout status deployment/kubia
+kubectl rollout history deployment.v1.apps/nginx-deployment
+kubectl rollout undo deployment/kubia --to-revision=2
+
+
+Ingress Controller:
+
+https://www.mirantis.com/blog/how-install-kubernetes-kubeadm/
+
+https://kubernetes.io/docs/concepts/services-networking/ingress/
+
+https://kubernetes.github.io/ingress-nginx/deploy/#aws
+
+https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengsettingupingresscontroller.htm
+
+https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.41.2/deploy/static/provider/aws/deploy.yaml
+
+https://www.cloudtechnologyexperts.com/kubeadm-on-aws/
+
+https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/
+
+https://itnext.io/kubernetes-part-2-a-cluster-set-up-on-aws-with-aws-cloud-provider-and-aws-loadbalancer-f02c3509f2c2
+
+https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/
+
+
+EKS
+
+aws eks update-kubeconfig --region ap-south-1 --name kubernetes-course-new --profile mine
+
+
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance
